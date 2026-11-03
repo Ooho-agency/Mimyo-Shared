@@ -1,0 +1,10 @@
+The FIRST image is an exploded technical line drawing of a baby feeding device, all its parts lined up on one horizontal axis (from left to right: base cap, clear outer body, pouch ring, milk pouch, valve holder, valve, teat, collar ring). The SECOND image is a photo of the same device fully assembled.
+
+Draw the device FULLY ASSEMBLED as a single technical line drawing, in exactly the same style as the first image:
+- the same dark line colour and the same line weight, clean outlines only, no shading, no fills, no colour, no grey tones;
+- the same viewing angle as the parts in the first image (seen slightly from the side, so the round ends are ellipses);
+- lying horizontally, base cap on the left, teat pointing to the right;
+- the outer body is clear, so show its outline plus the pouch ring line inside it, but keep it simple and clean;
+- proportions exactly as in the photo: a long cylindrical body, the collar ring around the base of the teat, the wide soft teat with its slim nipple tip.
+
+Pure white background, nothing else in the image. No text, no labels, no dimension lines, no logo.

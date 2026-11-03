@@ -1,0 +1,18 @@
+Create a medical education illustration for a breastfeeding information page: a side-view cut-away of a newborn baby correctly latched at the mother's breast.
+
+STYLE — match the first reference image exactly: soft flat illustration with a fine paper grain, warm peach skin tones, gentle tonal shading (no hard outlines), a translucent cut-away that shows the inside of the mouth, nasal passage and throat in muted dusty-rose tones, a few soft white highlight lines. Off-white linen background (#F7F3EF). Calm, premium, reassuring. Same baby character design as that reference: round bald head with a small tuft of brown hair, small rounded nose, soft ear.
+
+COMPOSITION — use the second reference image only as a guide for the pose and anatomy, not its style:
+- Baby in profile facing LEFT, on the right half of the image. The mother's breast comes in from the left edge, cropped by the frame: a natural, soft, slightly heavy breast shape, not a sphere. Only the breast and a hint of her chest are visible; no face of the mother.
+- Baby's head tilted slightly back, so the chin is pressed into the lower part of the breast and the tip of the nose is just free of the breast, with a small visible gap for breathing.
+- Eye OPEN, calm and content, looking up softly. A friendly, cute newborn face. Not sleeping.
+- Mouth opened wide and FULL of breast: the areola and nipple are drawn deep into the mouth, more areola visible above the top lip than below the bottom lip (asymmetric latch).
+- Both lips flanged outward (curled out) against the breast, sealing around it.
+
+CUT-AWAY (inside the mouth, translucent like the style reference):
+- The nipple is elongated and reaches far back, to where the hard palate meets the soft palate.
+- The tongue (pink) lies UNDER the nipple and breast tissue, extending forward over the lower gum and cupping the nipple from below.
+- The nasal passage is open: show it as a clear channel from the nostril down behind the soft palate to the throat, with one soft white curved arrow showing air flowing in through the nose.
+- The throat / airway continues down into the neck as in the style reference.
+
+DO NOT include: any text, labels, numbers, logos, a feeding bottle, extra arrows besides the single airflow arrow, or a visible face of the mother. No nudity beyond the breast itself as is normal in medical breastfeeding diagrams.

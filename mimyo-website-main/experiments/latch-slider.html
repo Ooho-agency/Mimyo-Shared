@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Breast vs Mimyo Slider</title>
+<style>
+@font-face{font-family:"Afterall Serif";src:url(../assets/fonts/AfterallSerif-ExtraboldWEB.woff2) format("woff2");font-weight:800;font-display:swap}
+:root{
+  --linen:#F9F6F5; --ink:#39392F; --head:#2E2E26; --grey:#61615C; --art:#FDF2EE;
+  --serif:"Afterall Serif",Georgia,serif; --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --gut:clamp(16px,4vw,48px); --ease:cubic-bezier(.22,.8,.24,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--linen);color:var(--ink);font:17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+
+.compare-sec{max-width:1240px;margin:0 auto;padding:clamp(48px,8vw,112px) var(--gut)}
+.compare-sec .intro{max-width:640px;margin-bottom:clamp(24px,4vw,40px)}
+.compare-sec h2{font:800 clamp(32px,4.4vw,54px)/1.05 var(--serif);color:var(--head);letter-spacing:-.01em;margin-bottom:16px}
+.compare-sec .intro p{color:var(--grey);font-size:18px}
+
+/* the slider */
+.compare{position:relative;border-radius:28px;overflow:hidden;background:var(--art);aspect-ratio:1800/1344;
+  touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize;--pos:50%}
+.compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.compare .top{clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.compare .bar{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;margin-left:-1px;background:#fff;box-shadow:0 0 0 1px rgba(57,57,47,.08)}
+.compare .knob{position:absolute;top:50%;left:var(--pos);width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;
+  background:var(--ink);display:grid;place-items:center;box-shadow:0 6px 20px rgba(57,57,47,.22);transition:transform .2s var(--ease)}
+.compare .knob svg{width:26px;height:26px}
+.compare.dragging .knob,.compare:focus-within .knob{transform:scale(1.08)}
+.compare input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.compare input:focus-visible ~ .knob{outline:3px solid var(--ink);outline-offset:4px}
+.compare .lbl{position:absolute;bottom:20px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.88);
+  font:600 14px/1 var(--sans);color:var(--ink);pointer-events:none;transition:opacity .25s}
+.compare .lbl.l{left:20px}
+.compare .lbl.r{right:20px}
+
+.compare-sec .note{margin-top:20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.compare-sec .note div{border-top:1px solid rgba(57,57,47,.16);padding-top:14px;font-size:15px;color:var(--grey)}
+.compare-sec .note b{display:block;color:var(--ink);font-size:16px;margin-bottom:4px}
+
+@media (max-width:720px){
+  .compare{border-radius:20px}
+  .compare .knob{width:48px;height:48px;margin:-24px 0 0 -24px}
+  .compare .lbl{bottom:12px;font-size:13px;padding:7px 12px}
+  .compare .lbl.l{left:12px}.compare .lbl.r{right:12px}
+  .compare-sec .note{grid-template-columns:1fr;gap:12px}
+}
+@media (prefers-reduced-motion:reduce){.compare .knob{transition:none}}
+</style>
+</head>
+<body>
+
+<section class="compare-sec" aria-labelledby="cmp-h">
+  <div class="intro">
+    <h2 id="cmp-h">Mimyo mimics the mechanics of breastfeeding.</h2>
+    <p>Slide left to swap the breast for Mimyo. At the breast and with Mimyo, your baby works for the milk in the same way.</p>
+  </div>
+
+  <div class="compare" id="cmp">
+    <img src="../assets/img/latch-mimyo.jpg" alt="Cut-away of a baby feeding with Mimyo: the lips seal on the wide base of the teat, the teat stretches deep into the mouth with the tongue underneath, and the nose stays free to breathe." width="1800" height="1344">
+    <img class="top" src="../assets/img/latch-breast.jpg" alt="Cut-away of a baby feeding at the breast: the lips seal on the areola, the nipple stretches deep into the mouth with the tongue underneath, and the nose stays free to breathe." width="1800" height="1344">
+    <span class="lbl l">At the breast</span>
+    <span class="lbl r">With Mimyo</span>
+    <span class="bar" aria-hidden="true"></span>
+    <input type="range" min="0" max="100" value="60" step="1" aria-label="Compare breastfeeding and Mimyo">
+    <span class="knob" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+  </div>
+
+  <div class="note">
+    <div><b>Lips sealed wide</b>On the areola at the breast, on the wide base of the teat with Mimyo.</div>
+    <div><b>Drawn deep into the mouth</b>The nipple, or the cone-shaped teat, stretches back to the palate as your baby sucks.</div>
+    <div><b>Nose free to breathe</b>The tongue does the work underneath while breathing stays in the nose.</div>
+  </div>
+</section>
+
+<script>
+(() => {
+  const box = document.getElementById('cmp'), range = box.querySelector('input'),
+        lblL = box.querySelector('.lbl.l'), lblR = box.querySelector('.lbl.r');
+  const set = v => {
+    v = Math.max(0, Math.min(100, v));
+    box.style.setProperty('--pos', v + '%');
+    range.value = v;
+    range.setAttribute('aria-valuetext', `${Math.round(v)}% breast, ${Math.round(100 - v)}% Mimyo`);
+    lblL.style.opacity = v < 18 ? 0 : 1;
+    lblR.style.opacity = v > 82 ? 0 : 1;
+  };
+  range.addEventListener('input', () => set(+range.value));
+  // pointer drag anywhere on the image (the range input covers the box for keyboard + click)
+  let drag = false;
+  const at = e => { const r = box.getBoundingClientRect(); set((e.clientX - r.left) / r.width * 100); };
+  box.addEventListener('pointerdown', e => { drag = true; box.classList.add('dragging'); box.setPointerCapture(e.pointerId); at(e); });
+  box.addEventListener('pointermove', e => { if (drag) at(e); });
+  const end = () => { drag = false; box.classList.remove('dragging'); };
+  box.addEventListener('pointerup', end); box.addEventListener('pointercancel', end);
+  // start just right of the mouth (everything that changes sits left of ~56%), so the page opens on the breast
+  const START = 60;
+  set(START);
+  // one-time nudge when the slider scrolls into view: sweep left to reveal Mimyo, then back
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let touched = false;
+    ['pointerdown', 'keydown'].forEach(t => box.addEventListener(t, () => { touched = true; }, { once: true }));
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      io.disconnect();
+      const keys = [[0, START], [900, 22], [1500, 22], [2400, START]];
+      const t0 = performance.now(), ease = x => x < .5 ? 2 * x * x : 1 - (-2 * x + 2) ** 2 / 2;
+      const step = now => {
+        if (touched || drag) return;
+        const t = now - t0;
+        const i = keys.findIndex(k => k[0] > t);
+        if (i === -1) return set(START);
+        const [ta, va] = keys[i - 1], [tb, vb] = keys[i];
+        set(va + (vb - va) * ease((t - ta) / (tb - ta)));
+        requestAnimationFrame(step);
+      };
+      setTimeout(() => requestAnimationFrame(step), 400);
+    }, { threshold: .6 });
+    io.observe(box);
+  }
+})();
+</script>
+</body>
+</html>

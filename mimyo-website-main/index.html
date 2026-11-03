@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mimyo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=5">
+<style>
+/* Hero: the whole block on the photo's own blue; photo anchored right, text left */
+.hero{--hero-blue:#D7E8F9;position:relative;overflow:hidden;background:var(--hero-blue);min-height:min(100svh,960px);display:grid;align-items:center;padding:130px 0 70px;border-radius:0 0 clamp(32px,5vw,80px) clamp(32px,5vw,80px)}
+.hero .hbg{position:absolute;top:0;right:0;height:100%;width:auto;max-width:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%);mask-image:linear-gradient(90deg,transparent,#000 14%);transform:translateX(7%)}
+.hero .wrap{position:relative;z-index:1;width:100%}
+.hero .htxt{max-width:min(34em,39vw)}
+.hero h1{font-size:clamp(40px,4.3vw,68px);line-height:1.04;margin:22px 0 22px}
+.hero p.sub{font:800 clamp(21px,1.8vw,28px)/1.25 var(--serif);color:var(--head);max-width:22em}
+.hero .ctas{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:36px}
+.hero .ctas span{font-size:14px;color:var(--ink);max-width:20em}
+
+/* Feeding is your baby's first exercise: text left, photo right */
+.exercise{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,6vw,110px);align-items:center;padding-block:clamp(80px,11vw,150px) 0}
+.exercise h2{font-size:clamp(34px,3.6vw,58px);margin-bottom:26px;line-height:1.08}
+.exercise p{color:var(--grey);margin-bottom:16px;max-width:30em;font-size:17px}
+.exercise p.first{color:var(--ink);font-size:clamp(18px,1.3vw,20px)}
+.exercise .photo{border-radius:28px;overflow:hidden;aspect-ratio:4/4.6;max-height:82vh;margin:0}
+.exercise .photo img{width:100%;height:100%;object-fit:cover;object-position:38% 50%}
+
+/* How it works: fits one screen (shared styles in site.css) */
+.meter{display:none}
+
+
+/* Benefits (approved) */
+.benefits{padding-top:clamp(80px,10vw,150px)}
+.benefits .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:46px}
+.benefits h2{font-size:clamp(36px,4.2vw,58px);line-height:1.12}
+.benefits h2 span{display:block;color:#8C7E72}
+.bgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.bgrid .col{display:grid;gap:22px}
+.bcard{position:relative;border-radius:32px;overflow:hidden;min-height:300px;display:flex;align-items:flex-end}
+.bcard.big{min-height:620px}
+.bcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bcard .t{z-index:2}
+.bcard .t{position:relative;padding:32px;color:#fff;max-width:330px}
+.bcard .t::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(40,38,34,.45),rgba(40,38,34,0));z-index:-1;border-radius:32px}
+.bcard h3{color:#fff;font-size:21px;margin-bottom:10px}
+.bcard p{font-size:13.5px;line-height:1.45}
+.bcard.big .t{margin:32px;padding:20px 20px 22px;border-radius:12px;background:rgba(255,255,255,.72);color:var(--ink);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.bcard.big .t::before{display:none}
+.bcard.big h3{color:var(--head)}
+.bcard.big p{color:#4b4b44}
+.bcard s{text-decoration-thickness:2px}
+/* zero colic: show the whole teat, collar and logo on the photo's own beige */
+.bcard.colic{background:#DBCFC3}
+.bcard.colic img{left:auto;width:64%;object-position:50% 22%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 22%);mask-image:linear-gradient(90deg,transparent,#000 22%)}
+
+/* Medical feeding: explosion */
+/* Medical feeding: full-screen pack block */
+.medsec{padding:clamp(80px,10vw,140px) clamp(12px,1.6vw,24px) 0}
+.medpack{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,96px);align-items:center;background:var(--linen-2);border-radius:clamp(40px,5vw,80px);padding:clamp(14px,1.6vw,24px);min-height:calc(100svh - 2*clamp(12px,1.6vw,24px))}
+.medpack > img{width:100%;height:100%;min-height:min(78svh,820px);object-fit:cover;object-position:60% 55%;border-radius:clamp(28px,3.6vw,60px)}
+.medpack .t{padding:clamp(24px,4vw,64px) clamp(24px,5vw,88px) clamp(24px,4vw,64px) 0}
+.medpack h2{font-size:clamp(34px,4.4vw,66px);line-height:1.06;margin:24px 0 22px}
+.medpack h2 sup{font-size:.45em}
+.medpack p{color:var(--grey);font-size:17px;max-width:28em}
+.medpack .ctas{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:34px}
+.medpack .ctas span{font:800 19px var(--serif);color:var(--head)}
+.medpack .foot{font-size:13px;margin-top:30px}
+/* In the pack: four line drawings with labels (drawn at one scale, so the line weight matches) */
+.medpack .lbl{font:500 11.5px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:12px}
+.inpack{list-style:none;padding:0;margin:0 0 18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;max-width:34em}
+.inpack li{display:grid;justify-items:center;gap:12px;text-align:center}
+.inpack .ico{width:100%;max-width:112px;aspect-ratio:1;border-radius:30%;background:#F8F5F3;border:2px solid #fff;display:grid;place-items:center}
+.inpack img{width:66%;height:auto}
+.inpack span{font:800 15px/1.25 var(--serif);color:var(--head)}
+.medpack .sep{font-size:14px}
+
+/* Features (Figma frame 11117:370, 1537 units wide). The logo, heading and cards share one centre line
+   (unit 712: "Like breastfeeding" ends on it, "Zero gravity" starts on it), so the stage is shifted right
+   by (768.5 - 712) / 1537 to put that line on the page centre. Stage = the device's height (1305 units).
+   To keep the heading, device and all four cards on one screen, the section is one screen tall and the stage
+   takes the height left under the heading (never taller than the Figma proportion): cards keep their width
+   and type size, the device shrinks. */
+.feat{padding-top:clamp(90px,11vw,150px);overflow-x:clip}
+.fhead{text-align:center;margin:0 auto}
+.fhead .mi{width:clamp(60px,7svh,96px);aspect-ratio:1;border-radius:50%;background:#fff;display:grid;place-items:center;margin:0 auto clamp(14px,2.4svh,28px)}
+.fhead .mi img{width:67%;height:auto}
+.fhead h2{font-size:clamp(30px,3.1vw,46px);line-height:1.15;max-width:21em;margin:0 auto}
+.fwrap{container-type:inline-size;max-width:1240px;margin:clamp(20px,3.5svh,44px) auto 0}
+.fstage{position:relative;aspect-ratio:1537/1305;transform:translateX(3.67%)}
+@media (min-width:861px){
+  .feat{margin-top:clamp(70px,9vw,130px);padding-block:clamp(16px,3svh,32px);height:max(560px,min(100svh,1400px));display:flex;flex-direction:column}
+  .fwrap{flex:1;min-height:0;width:100%;container-type:size}
+  .fstage{aspect-ratio:auto;height:min(100cqh,84.9cqw)}
+}
+.fdev{position:absolute;left:49%;top:48.6%;height:101.5%;width:auto;translate:-50% -50%;rotate:var(--tilt,9deg);filter:drop-shadow(0 2.5cqw 3cqw rgba(57,57,47,.10));will-change:rotate}
+.fcard{position:absolute;left:var(--l);top:var(--t);width:37.33%;display:grid;grid-template-columns:10.5cqw minmax(0,1fr);gap:1.8cqw;align-items:center;padding:1.79cqw;background:rgba(255,255,255,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:2px solid rgba(255,255,255,.95);border-radius:1.6cqw;transform-origin:var(--o,center)}
+.fcard img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:.9cqw}
+.fcard h3{font-size:max(17px,1.98cqw);line-height:1.25;margin:0 0 1.1cqw;white-space:nowrap}
+.fcard p{font-size:max(13.5px,1.3cqw);line-height:1.5;color:var(--ink)}
+/* scroll motion: cards zoom in from the device side; the device turns a little as the section passes */
+@media (prefers-reduced-motion:no-preference){
+  .fcard{opacity:0;scale:.72;transition:scale .9s cubic-bezier(.2,.8,.2,1),opacity .55s ease;transition-delay:var(--d,0s)}
+  .fcard.in{opacity:1;scale:1}
+}
+
+@media (max-width:860px){
+  .hero{min-height:0;padding:104px 0 0;display:flex;flex-direction:column;border-radius:0 0 32px 32px}
+  .hero .htxt{max-width:none}
+  .hero h1{font-size:36px;margin:16px 0 14px}
+  .hero p.sub{font-size:20px}
+  .hero .hbg{position:static;display:block;width:100%;height:auto;margin-top:28px;-webkit-mask-image:none;mask-image:none;transform:none;order:2}
+  .exercise{grid-template-columns:1fr;padding-top:64px}.exercise .photo{aspect-ratio:4/3.6}
+  .fwrap{margin-top:36px}
+  .fstage{aspect-ratio:auto;display:grid;gap:10px;transform:none}
+  .fdev{position:static;display:block;height:min(118vw,620px);margin:0 auto 26px;translate:none}
+  .fcard{position:static;width:auto;grid-template-columns:96px minmax(0,1fr);gap:14px;padding:12px;border-radius:20px}
+  .fcard img{border-radius:12px}
+  .inpack{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px}
+  .bgrid{grid-template-columns:1fr}.bcard.big{min-height:440px}
+  .benefits .head{flex-direction:column;align-items:flex-start}
+  .medpack{grid-template-columns:1fr;border-radius:32px;min-height:0}.medpack > img{min-height:0;aspect-ratio:4/3.4}.medpack .t{padding:4px 10px 18px}
+}
+</style>
+</head>
+<body>
+
+
+<header class="top dark">
+  <a class="logo logo-slot" href="index.html" aria-label="Mimyo home"></a>
+  <nav class="pill" aria-label="Main">
+    <a class="on hide-m" href="index.html">Mimyo</a>
+    <a href="professionals.html"><span class="d">Healthcare professionals</span><span class="m">Professionals</span></a>
+    <a class="cta" href="contact.html">Get in touch</a>
+  </nav>
+</header>
+
+<main>
+<!-- HERO (H1, H2) -->
+<section class="hero">
+  <img class="hbg" src="assets/img/hero-blue.jpg" alt="A woman holding a filled Mimyo device against a soft blue background" width="2600" height="1837" fetchpriority="high">
+  <div class="wrap">
+    <div class="htxt">
+      <span class="tag">CE-marked medical device</span>
+      <h1>Calm feeds, restful nights, healthy start.</h1>
+      <p class="sub">Mimyo is the only medical feeding device that mimics the breast.</p>
+      <div class="ctas"><a class="btn" href="contact.html">Stay updated</a><span>Soon in pharmacies near you</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Feeding is your baby's first exercise (H4): text left, photo right -->
+<section class="exercise wrap">
+  <div class="txt">
+    <h2>Feeding is your baby's first exercise.</h2>
+    <p class="first">At the breast, your baby has to work for the milk. The tongue compresses and the jaw pulls, while your baby breathes through the nose.</p>
+    <p>That effort develops your baby's jaw and airway.</p>
+    <p>Traditional bottles take the effort away, because milk flows out under gravity whether your baby is ready for it or not.</p>
+  </div>
+  <figure class="photo"><img src="assets/img/r3-garden.jpg" alt="A mother breastfeeding in the garden, a Mimyo device on the table beside her" loading="lazy"></figure>
+</section>
+
+<!-- How Mimyo works: approved HCP layout (diagram + tabs), parent copy (H5) -->
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="head">
+      <h2>Mimyo mimics the mechanics of breastfeeding.</h2>
+      <p>Milk only flows when your baby works for it, just like at the breast.</p>
+    </div>
+    <figure class="cmpwrap">
+      <div class="compare" id="cmp">
+        <img src="assets/img/latch-mimyo.jpg" alt="Cut-away of a baby feeding with Mimyo: the lips seal on the wide base of the teat, the teat stretches deep into the mouth with the tongue underneath, and the nose stays free to breathe." width="1800" height="1344" loading="lazy">
+        <img class="cmp-top" src="assets/img/latch-breast.jpg" alt="Cut-away of a baby feeding at the breast: the lips seal on the areola, the nipple stretches deep into the mouth with the tongue underneath, and the nose stays free to breathe." width="1800" height="1344" loading="lazy">
+        <!-- numbers: shown on both pictures, since the mechanics are the same. Positions are % of the 1800 × 1344 illustration. -->
+        <div class="callouts" aria-hidden="true">
+          <span class="co" style="--x:35%;--y:38%">1</span>
+          <span class="co" style="--x:49%;--y:71%">2</span>
+          <span class="co" style="--x:42%;--y:83%">3</span>
+          <span class="co" style="--x:55.6%;--y:44%">4</span>
+        </div>
+        <span class="lbl l">At the breast</span>
+        <span class="lbl r">With Mimyo</span>
+        <span class="bar" aria-hidden="true"></span>
+        <input type="range" min="0" max="100" value="60" step="1" aria-label="Compare breastfeeding and Mimyo">
+        <span class="knob" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+      </div>
+      <figcaption>Slide to swap the breast for Mimyo.</figcaption>
+    </figure>
+    <ol class="benefits4">
+      <li><i>1</i><b>Lips seal around the teat</b><span>No air gets in, so your baby swallows milk, not air.</span></li>
+      <li><i>2</i><b>Tongue presses in a wave</b><span>A workout for the tongue that supports healthy jaw and face development.</span></li>
+      <li><i>3</i><b>Jaw works</b><span>Every suck trains the jaw, feed after feed.</span></li>
+      <li><i>4</i><b>Nose keeps breathing</b><span>Breathing stays in the nose while your baby feeds.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- Benefits (H6, H13) -->
+<section class="benefits wrap">
+  <div class="head">
+    <h2><span>The benefits of breastfeeding.</span><em>The ease of Mimyo.</em></h2>
+    <a class="btn" href="contact.html">Stay updated</a>
+  </div>
+  <div class="bgrid">
+    <article class="bcard big"><img src="assets/img/r3-baby.jpg" alt="Baby feeding with Mimyo, breathing through the nose" loading="lazy">
+      <div class="t"><h3>Nasal Breathing</h3><p>With Mimyo, your baby does the work. They put in the effort with every feed, the same way they would at the breast.</p></div></article>
+    <div class="col">
+      <article class="bcard colic"><img src="assets/img/colic-bottle.jpg" alt="Close-up of a filled Mimyo device without its lid" loading="lazy">
+        <div class="t"><h3><s><em>Anti</em></s> Zero Colic</h3><p>To draw the milk out, your baby builds real suction with the tongue and jaw. There is no air intake by design, so nothing is gulped down along the way.</p></div></article>
+      <article class="bcard"><img src="assets/img/r3-father.jpg" alt="A father feeding his baby with Mimyo" loading="lazy" style="object-position:50% 35%">
+        <div class="t"><h3>Stronger Tongue and Jaw</h3><p>That effort does more than feed your baby. Feed after feed, it helps build a stronger tongue &amp; jaw, healthy nasal breathing and ultimately, better sleep.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- Features (approved, H8): mi mark, heading, device photo with the four feature cards -->
+<section class="feat wrap" id="features">
+  <div class="fhead">
+    <span class="mi"><img src="assets/img/mi-mark.png" alt="" width="137" height="65"></span>
+    <h2>Mimyo is a medical feeding device designed to mimic the <em>mechanics of breastfeeding.</em></h2>
+  </div>
+  <div class="fwrap"><div class="fstage" id="fstage">
+    <img class="fdev" src="assets/img/features-device.webp" alt="A filled Mimyo device with its storage cap" width="596" height="1946" loading="lazy">
+    <!-- positions from the Figma frame: left = x / 1537, top = (y - 574) / 1305; --o = the corner facing the device -->
+    <article class="fcard" style="--l:8.98%;--t:.69%;--o:100% 100%;--d:0s"><img src="assets/img/feat-baby.jpg" alt="" loading="lazy"><div><h3>Like breastfeeding</h3><p>Your baby works for the milk, just like at the breast. That effort is what supports healthy tongue, jaw and face development, feed after feed.</p></div></article>
+    <article class="fcard" style="--l:62.65%;--t:21.3%;--o:0% 50%;--d:.08s"><img src="assets/img/teat-closeup.jpg" alt="" loading="lazy"><div><h3>No air, <em>by design</em></h3><p>A patented dual-valve system means no air enters while your baby feeds, only milk. Designed for zero colic.</p></div></article>
+    <article class="fcard" style="--l:0%;--t:45.67%;--o:100% 50%;--d:.16s"><img src="assets/img/date-closeup.jpg" alt="" loading="lazy"><div><h3>Breast-milk pouch</h3><p>Milk changes throughout the day, so mark it AM or PM with our included storage pouch. The right milk, right on time, just like nature intended.</p></div></article>
+    <article class="fcard" style="--l:46.32%;--t:66.28%;--o:0% 0%;--d:.24s"><img src="assets/img/pouch-closeup.jpg" alt="" loading="lazy"><div><h3>Zero gravity</h3><p>Nothing flows by gravity. Milk moves only when your baby works for it, exactly as at the breast.</p></div></article>
+  </div></div>
+</section>
+
+<!-- Medical feeding: the box, with what's in the pack as drawings (H7–H10) -->
+<section class="medsec">
+  <div class="medpack">
+    <img src="assets/img/r3-pack.jpg" alt="The Mimyo pharmacy pack" loading="lazy">
+    <div class="t">
+      <h2>A medical feeding device, <em>tested with 150 children.</em><sup>*</sup></h2>
+      <p class="lbl">In the pack</p>
+      <ul class="inpack">
+        <li><span class="ico"><img src="assets/img/icon-device.svg" alt="" width="64" height="64"></span><span>Mimyo device</span></li>
+        <li><span class="ico"><img src="assets/img/icon-pouch.svg" alt="" width="64" height="64"></span><span>Milk pouch</span></li>
+        <li><span class="ico"><img src="assets/img/icon-teat.svg" alt="" width="64" height="64"></span><span>Teat</span></li>
+        <li><span class="ico"><img src="assets/img/icon-valve.svg" alt="" width="64" height="64"></span><span>Valve</span></li>
+      </ul>
+      <p class="sep">Pouches, teats, valves and a dishwasher basket are also sold separately.</p>
+      <div class="ctas"><a class="btn" href="contact.html">Stay updated</a><span>Ask your pharmacist for advice.</span></div>
+      <p class="foot">*Clinical study on 150 children, CHU Rabat (Morocco).</p>
+    </div>
+  </div>
+</section>
+<!-- FAQ (H12, H14) -->
+<section class="wrap faq">
+  <div>
+    <h2>Questions parents <em>ask us</em></h2>
+    <p class="lead">We are always ready to help you with a clear answer if you have other questions. Ask your pharmacist or paediatrician for advice.</p>
+    <a class="btn" href="contact.html">Get in touch</a>
+  </div>
+  <div>
+    <details class="qa"><summary>Is it microwave friendly?<i></i></summary><div class="ans"><mark>Answer to come from LHP</mark></div></details>
+    <details class="qa"><summary>How does Mimyo mimic breastfeeding?<i></i></summary><div class="ans">Your baby has to work for the milk, just like at the breast: the tongue presses and the mouth creates suction. A patented dual-valve system only lets milk out when your baby draws it out, and lets no air in.</div></details>
+    <details class="qa"><summary>How long can I store the mother milk in the pouch?<i></i></summary><div class="ans"><mark>Answer to come from LHP</mark></div></details>
+    <details class="qa"><summary>Will my baby feel the difference?<i></i></summary><div class="ans"><mark>Answer to come from LHP</mark></div></details>
+    <details class="qa"><summary>Can I use the bottle with formula? Or just breast milk?<i></i></summary><div class="ans">Both. Mimyo works with expressed breast milk or formula.</div></details>
+    <details class="qa"><summary>Can I use Mimyo from birth, and with breast milk or formula?<i></i></summary><div class="ans">Yes, from birth to age 4, with expressed breast milk or formula.</div></details>
+    <details class="qa"><summary>Will using this device undo the benefits of breastfeeding?<i></i></summary><div class="ans">No. Mimyo complements breastfeeding; it doesn't replace it.</div></details>
+    <details class="qa"><summary>Why does Mimyo cost more than the bottles at the supermarket?<i></i></summary><div class="ans"><mark>Answer to come from LHP</mark></div></details>
+    <details class="qa"><summary>Will this stop my baby from getting colic?<i></i></summary><div class="ans">Mimyo is designed for zero colic: no air enters by design. <mark>LHP to confirm</mark></div></details>
+    <details class="qa"><summary>Is Mimyo dishwasher safe?<i></i></summary><div class="ans">Yes, with the dishwasher basket, available separately. <mark>LHP to confirm</mark></div></details>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="row">
+    <div>
+      <span class="logo logo-slot"></span>
+      <h4>Tomorrow's health <em>begins at birth</em></h4>
+      <p>Mimyo is a CE-marked medical feeding device designed to replicate the mechanics of breastfeeding. Your baby works for the milk, which supports healthy jaw development and nasal breathing.</p>
+    </div>
+    <nav class="pill" aria-label="Footer"><a class="on" href="index.html">Mimyo</a><a href="professionals.html"><span class="d">Healthcare professionals</span><span class="m">Professionals</span></a><a class="cta" href="contact.html">Get in touch</a></nav>
+  </div>
+  <div class="legal"><span>© 2026 Mimyo. All rights reserved.<br>CE-marked medical device by LHP Healthcare, Belgium</span><span><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a></span></div>
+  <div class="wm logo-slot" aria-hidden="true"></div>
+</footer>
+
+<script src="assets/logo.js"></script>
+<script>document.querySelectorAll('.logo-slot').forEach(el => el.innerHTML = window.LOGO_FULL.replace(/ width="530" height="163"/, ''));</script>
+<script src="assets/compare.js?v=3"></script>
+<script>
+// Features: each card zooms in when it is well inside the screen and out again when it leaves;
+// the device turns from about 15 to 3 degrees as the section scrolls past (9 degrees, as in the design, mid-way)
+(() => {
+  const stage = document.getElementById('fstage'); if (!stage) return;
+  const dev = stage.querySelector('.fdev'), cards = [...stage.querySelectorAll('.fcard')];
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const update = () => {
+    const vh = innerHeight;
+    cards.forEach(c => { const r = c.getBoundingClientRect(); c.classList.toggle('in', r.top < vh * .88 && r.bottom > vh * .12); });
+    if (still) return;
+    const r = stage.getBoundingClientRect();
+    const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));   // 0 = just below the screen, 1 = just above
+    dev.style.setProperty('--tilt', (15 - 12 * p).toFixed(2) + 'deg');
+  };
+  addEventListener('scroll', update, { passive: true });
+  addEventListener('resize', update); update();
+})();
+</script>
+</body>
+</html>

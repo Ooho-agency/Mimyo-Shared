@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Latch Illustration</title>
+<style>
+:root{--bg:#F7F3EF;--ink:#39392F;--grey:#61615C}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1320px;margin:0 auto;padding:28px 20px 60px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px;align-items:start}
+h1{font:800 22px Georgia,serif;margin-bottom:6px}
+.side p{color:var(--grey);font-size:14px;margin-bottom:14px}
+.side ol{padding-left:18px;display:grid;gap:8px;font-size:14px}
+.side li b{display:block}
+.side label{display:flex;gap:8px;align-items:center;margin-top:18px;font-size:14px;cursor:pointer}
+figure{background:var(--bg)}
+svg{width:100%;height:auto;display:block}
+.lbl{display:none}
+body.labels .lbl{display:inline}
+.lbl text{font:600 15px "Helvetica Neue",Arial,sans-serif;fill:#39392F}
+.lbl circle{fill:#39392F}
+.lbl line{stroke:#39392F;stroke-width:1.2}
+@media (max-width:900px){.wrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body class="labels">
+<div class="wrap">
+<figure>
+<svg viewBox="0 0 1200 1000" role="img" aria-labelledby="t d">
+  <title id="t">Baby latched deeply at the breast</title>
+  <desc id="d">Side view, baby facing right with the head tilted back and eyes open. The mouth is wide open and full of breast: the areola and nipple are drawn deep into the mouth. The tongue lies underneath, the lower lip is curled out and the chin touches the breast, while the nose stays free.</desc>
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 .06"/></feComponentTransfer>
+      <feComposite in2="SourceGraphic" operator="in"/>
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+    <clipPath id="card"><rect width="1200" height="1000" rx="48"/></clipPath>
+    <marker id="ahd" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#39392F"/></marker>
+  </defs>
+
+  <g clip-path="url(#card)" filter="url(#grain)">
+    <rect width="1200" height="1000" fill="#F7F3EF"/>
+
+    <!-- BABY: head tilted back, facing right -->
+    <path fill="#F3D3BE" d="
+      M 0 0 L 610 0
+      C 590 60, 566 130, 560 190
+      C 556 236, 568 268, 584 290
+      C 600 310, 622 322, 646 334
+      C 676 348, 694 366, 690 386
+      C 686 404, 664 410, 646 408
+      C 634 410, 630 420, 640 428
+      C 652 436, 668 440, 676 444
+      L 700 560
+      L 728 724
+      C 736 748, 734 770, 716 790
+      C 680 830, 620 850, 560 860
+      C 470 876, 380 900, 300 1000
+      L 0 1000 Z"/>
+    <!-- shadow under the ear and jaw (as in the reference) -->
+    <path fill="#E3AE8F" d="M 0 700 C 120 690, 250 700, 360 740 C 420 762, 470 800, 500 856 C 420 880, 350 920, 300 1000 L 0 1000 Z"/>
+    <!-- cheek -->
+    <ellipse cx="430" cy="420" rx="110" ry="80" fill="#F0B9A2" opacity=".28"/>
+    <!-- ear -->
+    <path fill="#EDBDA2" d="M 120 560 C 170 520, 250 530, 270 600 C 288 664, 250 720, 190 726 C 160 728, 150 708, 162 690 C 176 668, 168 652, 150 646 C 120 634, 96 590, 120 560 Z"/>
+    <path d="M 160 580 C 210 570, 240 600, 236 642 C 232 672, 210 688, 186 684" fill="none" stroke="#D69A80" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 196 620 C 210 628, 214 646, 202 656" fill="none" stroke="#D69A80" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- open, friendly eye and brow -->
+    <path d="M 380 210 C 420 182, 480 180, 520 200" fill="none" stroke="#C69378" stroke-width="9" stroke-linecap="round"/>
+    <path fill="#FFFFFF" d="M 404 268 C 424 238, 478 232, 506 258 C 486 292, 432 300, 404 268 Z"/>
+    <circle cx="460" cy="264" r="25" fill="#4A3A33"/>
+    <circle cx="452" cy="256" r="7" fill="#FFFFFF"/>
+    <path d="M 400 266 C 424 232, 480 226, 512 256" fill="none" stroke="#6E4E3E" stroke-width="5" stroke-linecap="round"/>
+    <path d="M 412 300 C 440 312, 476 310, 500 296" fill="none" stroke="#E2B097" stroke-width="5" stroke-linecap="round"/>
+    <!-- nose shading and nostril -->
+    <path d="M 604 316 C 626 330, 648 344, 662 356" fill="none" stroke="#E7B79D" stroke-width="6" stroke-linecap="round" opacity=".7"/>
+    <path d="M 640 396 C 654 402, 668 402, 678 396" fill="none" stroke="#C98C74" stroke-width="5" stroke-linecap="round"/><ellipse cx="660" cy="402" rx="11" ry="5" fill="#C98C74" opacity=".55"/>
+
+    <!-- INSIDE THE MOUTH -->
+    <!-- throat channel (white), behind the tongue -->
+    <path fill="#FFFFFF" d="M 430 520 C 400 540, 380 580, 372 640 C 364 700, 368 760, 380 820 L 430 820 C 420 760, 418 704, 424 652 C 430 600, 446 566, 470 548 Z"/>
+    <!-- tongue -->
+    <path fill="#D47B98" d="
+      M 440 560
+      C 470 540, 520 540, 570 556
+      C 620 572, 660 600, 690 630
+      C 704 646, 704 668, 690 680
+      C 650 714, 590 738, 520 744
+      C 470 748, 430 730, 420 700
+      C 412 660, 418 600, 440 560 Z"/>
+    <!-- lower gum and curled-out lower lip -->
+
+    <!-- MOTHER: breast, cut off by the frame; the surface curves away above the nose -->
+    <path fill="#F6DFD1" d="
+      M 900 0 L 1200 0 L 1200 1000 L 820 1000
+      C 820 950, 790 900, 760 860
+      C 740 830, 732 790, 730 750
+      L 712 640
+      L 694 520
+      C 690 480, 684 456, 682 430
+      C 684 386, 712 300, 752 220
+      C 780 140, 840 60, 900 0 Z"/>
+    <!-- soft contour along the breast edge -->
+    <path d="M 900 0 C 840 60, 780 140, 740 220 C 712 300, 684 386, 682 430" fill="none" stroke="#E6BDA4" stroke-width="22" stroke-linecap="round" opacity=".7"/>
+    <path d="M 730 750 C 732 790, 740 830, 760 860 C 790 900, 820 950, 820 1000" fill="none" stroke="#E6BDA4" stroke-width="22" stroke-linecap="round" opacity=".7"/>
+
+    <!-- AREOLA AND NIPPLE drawn deep into the mouth (one cone), more areola above the lip -->
+    <path fill="#E8958A" d="
+      M 700 330
+      C 720 420, 740 560, 760 700
+      C 764 730, 752 748, 730 750
+      C 700 752, 680 720, 660 690
+      C 630 650, 590 620, 540 600
+      C 500 584, 470 560, 466 530
+      C 462 500, 490 478, 530 470
+      C 590 458, 650 440, 690 400
+      C 698 380, 702 356, 700 330 Z"/>
+    <!-- nipple tip -->
+    <circle cx="476" cy="516" r="44" fill="#DC7C76"/>
+    <!-- top lip curled out, resting on the areola -->
+    <path fill="#EDB59E" d="M 640 420 C 660 414, 684 418, 700 432 C 710 444, 702 458, 686 460 C 664 462, 644 452, 634 440 C 628 432, 630 424, 640 420 Z"/>
+
+    <!-- lower lip curled out over the bottom of the areola, chin against the breast -->
+    <path fill="#EDB59E" stroke="#DDA086" stroke-width="3" d="M 628 712 C 660 704, 700 708, 726 724 C 744 736, 748 754, 736 764 C 720 774, 692 768, 668 756 C 648 746, 632 730, 628 712 Z"/>
+    <path d="M 650 722 C 676 720, 702 728, 720 742" fill="none" stroke="#F6CDBB" stroke-width="5" stroke-linecap="round"/>
+    <!-- arrows: the tongue lifts and moves the milk back; swallow down the throat -->
+    <path d="M 560 720 C 590 690, 620 664, 650 640" fill="none" stroke="#39392F" stroke-width="4" stroke-linecap="round" marker-end="url(#ahd)"/>
+    <path d="M 440 560 C 424 590, 414 620, 410 650" fill="none" stroke="#39392F" stroke-width="4" stroke-linecap="round" marker-end="url(#ahd)"/>
+
+    <!-- blanket -->
+    <path fill="#CFDDEA" d="M 260 1000 C 340 930, 470 880, 620 860 C 700 850, 760 860, 800 880 C 830 900, 840 950, 840 1000 Z"/>
+  </g>
+
+  <!-- anatomy check labels (toggle) -->
+  <g class="lbl">
+    <line x1="690" y1="350" x2="900" y2="250"/><circle cx="690" cy="350" r="4"/><text x="905" y="255">More areola above the lip</text>
+    <line x1="664" y1="380" x2="860" y2="160"/><circle cx="664" cy="380" r="4"/><text x="865" y="165">Nose free</text>
+    <line x1="476" y1="516" x2="300" y2="430"/><circle cx="476" cy="516" r="4"/><text x="80" y="420">Nipple deep in the mouth</text>
+    <line x1="560" y1="660" x2="300" y2="540"/><circle cx="560" cy="660" r="4"/><text x="70" y="530">Tongue under the breast</text>
+    <line x1="700" y1="700" x2="900" y2="780"/><circle cx="700" cy="700" r="4"/><text x="905" y="785">Lower lip curled out</text>
+    <line x1="730" y1="760" x2="900" y2="860"/><circle cx="730" cy="760" r="4"/><text x="905" y="865">Chin against the breast</text>
+  </g>
+</svg>
+</figure>
+<aside class="side">
+  <h1>Latch illustration v6</h1>
+  <p>Side cross-section of a baby feeding at the breast, in the style of the existing diagram. This is the still that the animation will start from.</p>
+  <ol>
+    <li><b>Mouth wide, full of breast</b>Breast tissue (areola and nipple) fills the mouth, not just the nipple.</li>
+    <li><b>Both lips curled out</b>Flanged against the breast.</li>
+    <li><b>Asymmetric latch</b>More areola visible above the top lip than below the bottom lip.</li>
+    <li><b>Chin into the breast, nose free</b>Head tilted slightly back.</li>
+    <li><b>Nipple deep</b>Drawn out to where the hard and soft palate meet.</li>
+    <li><b>Tongue under, cupping</b>Over the lower gum; the wave runs front to back.</li>
+    <li><b>Nasal breathing</b>Air goes in through the nose and down the airway.</li>
+  </ol>
+  <label><input type="checkbox" id="lbl" checked> Show anatomy labels</label>
+</aside>
+</div>
+<script>
+document.getElementById('lbl').addEventListener('change', e => document.body.classList.toggle('labels', e.target.checked));
+</script>
+</body>
+</html>

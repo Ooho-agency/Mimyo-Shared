@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact · Mimyo</title>
+<link rel="stylesheet" href="assets/site.css?v=5">
+<style>
+.contact{padding:150px 0 0}
+.contact .grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:16px;align-items:end}
+.contact h1{font-size:clamp(32px,3.4vw,46px);margin:0 0 22px}
+.contact .chead{grid-column:1/-1}
+.card{background:#fff;border-radius:32px;padding:clamp(24px,3vw,42px);display:grid;gap:18px;align-self:stretch}
+.card .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card .chk{display:flex;gap:8px;align-items:flex-start;font-size:12.5px}
+.card .chk input{margin-top:2px}
+.card .legal{font-size:12px;color:var(--grey);line-height:1.5}
+.card .err{color:#9b3b30;font-size:13.5px;min-height:1.2em}
+.photo{border-radius:32px;overflow:hidden;align-self:stretch;min-height:520px}
+.photo img{width:100%;height:100%;object-fit:cover}
+@media (max-width:860px){
+  .contact{padding:110px 0 0}
+  .contact .grid{grid-template-columns:1fr}
+  .card .row{grid-template-columns:1fr}
+  .photo{min-height:300px}
+}
+</style>
+</head>
+<body>
+<header class="top dark">
+  <a class="logo logo-slot" href="index.html" aria-label="Mimyo home"></a>
+  <nav class="pill" aria-label="Main">
+    <a class="hide-m" href="index.html">Mimyo</a>
+    <a href="professionals.html"><span class="d">Healthcare professionals</span><span class="m">Professionals</span></a>
+    <a class="cta" href="contact.html">Get in touch</a>
+  </nav>
+</header>
+
+<main class="wrap contact">
+  <div class="grid">
+    <div class="chead"><h1>Contact us</h1></div>
+
+    <!-- Shared form for the public and professionals (F1–F6) -->
+    <form class="card" id="contact-form" novalidate>
+      <label class="field">You are <span class="req">*</span>
+        <select id="c-who"><option value="">Select one…</option><option>Parent</option><option>Pharmacist</option><option>Midwife</option><option>Physiotherapist</option><option>Paediatrician</option><option>Other medical professional</option><option>Press</option><option>Other</option></select></label>
+      <div class="row">
+        <label class="field">First name <span class="req">*</span><input id="c-first" autocomplete="given-name"></label>
+        <label class="field">Last name <span class="req">*</span><input id="c-last" autocomplete="family-name"></label>
+      </div>
+      <div class="row">
+        <label class="field">Email <span class="req">*</span><input id="c-email" type="email" autocomplete="email"></label>
+        <label class="field">Phone number<input type="tel" autocomplete="tel"></label>
+      </div>
+      <label class="field">How did you hear about us?
+        <select><option value="">Select one…</option><option>Pharmacist</option><option>Doctor / paediatrician</option><option>Midwife</option><option>Maternity / hospital</option><option>Friend or family</option><option>Social media</option><option>Search engine</option><option>Press</option><option>Event / congress</option><option>Other</option></select></label>
+      <label class="field">Message <span class="req">*</span><textarea id="c-msg" placeholder="Type your message..."></textarea></label>
+      <label class="chk"><input type="checkbox" id="c-ok"> <span>I accept the <a href="#">Terms</a> and agree that LHP Healthcare processes my details to answer this message. <span class="req">*</span></span></label>
+      <p class="legal">Your details are used only to reply to you and are not shared. See our <a href="#">Privacy Policy</a>. <mark>GDPR wording to be provided or approved by LHP</mark> · <span class="req">*</span> required</p>
+      <div class="err" id="c-err" aria-live="polite"></div>
+      <div><button class="btn" type="submit">Submit</button></div>
+    </form>
+    <div class="photo"><img src="assets/img/r3-closeup.jpg" alt="Close-up of the Mimyo teat, full of milk"></div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="row">
+    <div>
+      <span class="logo logo-slot"></span>
+      <h4>Tomorrow's health <em>begins at birth</em></h4>
+      <p>Mimyo is a CE-marked medical feeding device designed to replicate the mechanics of breastfeeding. Your baby works for the milk, which supports healthy jaw development and nasal breathing.</p>
+    </div>
+    <nav class="pill" aria-label="Footer"><a href="index.html">Mimyo</a><a href="professionals.html"><span class="d">Healthcare professionals</span><span class="m">Professionals</span></a><a class="cta on" href="contact.html">Get in touch</a></nav>
+  </div>
+  <div class="legal"><span>© 2026 Mimyo. All rights reserved.<br>CE-marked medical device by LHP Healthcare, Belgium</span><span><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a></span></div>
+  <div class="wm logo-slot" aria-hidden="true"></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/logo.js"></script>
+<script>
+document.querySelectorAll('.logo-slot').forEach(el => el.innerHTML = window.LOGO_FULL.replace(/ width="530" height="163"/, ''));
+const $ = id => document.getElementById(id);
+// Coming from the pro page: pre-fill "You are" with the profession chosen at the gate
+if (new URLSearchParams(location.search).get('you') === 'pro') {
+  let p = ''; try { p = sessionStorage.getItem('mimyo_prof') || ''; } catch (e) {}
+  const map = { 'Pharmacist':'Pharmacist', 'Pharmacy technician':'Pharmacist', 'Midwife':'Midwife', 'Physiotherapist':'Physiotherapist', 'Paediatrician':'Paediatrician' };
+  $('c-who').value = map[p] || 'Other medical professional';
+}
+$('contact-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const err = $('c-err');
+  if (!$('c-who').value || !$('c-first').value.trim() || !$('c-last').value.trim() || !$('c-email').value.trim() || !$('c-msg').value.trim()) { err.textContent = 'Please fill in the fields marked *.'; return; }
+  if (!$('c-email').checkValidity()) { err.textContent = 'Please enter a valid email address.'; return; }
+  if (!$('c-ok').checked) { err.textContent = 'Please accept the terms.'; return; }
+  err.textContent = ''; e.target.reset();
+  const t = $('toast'); t.textContent = 'Prototype: message not sent (will go to contact-web@mimyo.eu).'; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2800);
+});
+</script>
+</body>
+</html>

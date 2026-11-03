@@ -1,0 +1,4 @@
+Draw ONLY the small umbrella valve of this baby feeding device as a single clean technical line drawing.
+STYLE: exactly like the FIRST and SECOND images (line drawings of the same device and its teat): the same thin, even, dark line, smooth clean outlines, no shading, no fills, no grey, no colour, pure white background.
+SHAPE: the THIRD image is the engineering drawing of the valve area: the valve is the small thin round flexible disc on the RIGHT, with a tiny stem in its centre. Draw only that disc: a thin round membrane seen at an angle (an ellipse) with a small central stem, slightly domed. Do not draw the larger disc with holes or its tab.
+Draw it large and centred. No text, no labels, no other parts.

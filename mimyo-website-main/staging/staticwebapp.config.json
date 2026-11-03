@@ -1,0 +1,16 @@
+{
+  "routes": [
+    { "route": "/api/*", "allowedRoles": ["anonymous"] },
+    { "route": "/.auth/login/github", "statusCode": 404 },
+    { "route": "/.auth/login/twitter", "statusCode": 404 },
+    { "route": "/*", "allowedRoles": ["authenticated"] }
+  ],
+  "responseOverrides": {
+    "401": { "redirect": "/.auth/login/aad?post_login_redirect_uri=.referrer", "statusCode": 302 }
+  },
+  "globalHeaders": {
+    "X-Robots-Tag": "noindex, nofollow",
+    "Cache-Control": "no-cache"
+  },
+  "platform": { "apiRuntime": "node:20" }
+}

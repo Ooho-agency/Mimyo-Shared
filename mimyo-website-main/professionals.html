@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Mimyo for Healthcare Professionals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=5">
+<style>
+/* Section heads (tag, heading, line) */
+.shead{max-width:660px;margin-bottom:clamp(28px,4vw,48px)}
+.shead h2{font-size:clamp(32px,3.6vw,52px);margin:18px 0 16px}
+.shead p{color:var(--grey);font-size:16px;max-width:34em}
+.sec{padding-top:clamp(70px,10vw,140px)}
+
+/* 1 · Hero (approved: blush photo, text left, rounded bottom) with the four essentials in boxes */
+.hero{position:relative;min-height:min(100svh,900px);border-radius:0 0 48px 48px;overflow:hidden;display:flex;align-items:center;background:#E9D3CE}
+.hero>.bg{position:absolute;inset:0;background:url(assets/img/hcp-hero.jpg) 62% 60%/cover no-repeat}
+.hero>.bg::after{content:"";position:absolute;inset:0;background:#EDCFC8;mix-blend-mode:multiply;opacity:.9}
+.hero>.bg::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(246,232,228,.72) 0%,rgba(246,232,228,.45) 40%,rgba(246,232,228,0) 64%)}
+.hero .in{position:relative;z-index:2;padding:120px 0 64px;max-width:860px}
+.hero h1{font-size:clamp(34px,4.2vw,60px);margin:0 0 20px;max-width:13em}
+.hero p{font-size:clamp(16px,1.3vw,19px);color:#4b4b44;max-width:33em}
+.glance{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:30px;max-width:620px}
+.glance div{background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:22px;padding:16px 18px}
+.glance b{display:block;font:800 18px/1.15 var(--serif);color:var(--head);margin-bottom:6px}
+.glance span{display:block;font-size:14px;line-height:1.45;color:#4b4b44}
+.hero .ctas{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:30px}
+
+/* 2 · Who it's for: a tall, sticky pack shot next to the quick answers */
+#target{align-items:start}
+#target .media{aspect-ratio:auto;height:min(calc(100svh - 160px),820px);position:sticky;top:110px;background:#E6DED4}
+#target .media img{object-position:73% 50%}   /* the pack sits right of centre in the photo; this centres it in the tall frame */
+#target .txt{max-width:460px;padding-top:8px}
+
+/* 3 · How it works: the slider from the home page (shared styles in site.css) */
+.how .head p{color:var(--grey);font-size:clamp(15.5px,1.2vw,18px);max-width:52em;margin:0 auto}
+
+/* 4 · Warnings, and when to refer */
+#precautions{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,6vw,100px);align-items:start}
+#precautions .shead{margin-bottom:0}
+#precautions .btn{margin-top:26px}
+.box{background:#fff;border-radius:22px;padding:8px 24px;margin-bottom:12px}
+.box h3{font-size:20px;padding:18px 0 4px}
+.box ul{list-style:none}
+.box li{padding:12px 0 12px 22px;border-top:1px solid var(--line);position:relative;font-size:15.5px;color:var(--grey)}
+.box h3+ul li:first-child{border-top:0}
+.box li::before{content:"";position:absolute;left:2px;top:1.25em;width:7px;height:7px;border-radius:50%;background:var(--ink)}
+.box p{font-size:15.5px;color:var(--grey);padding:6px 0 18px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.two .box{margin-bottom:12px}
+
+/* 5 · Evidence (approved blue panel, frosted cards): the CHU Rabat programme */
+.evidence{margin-top:clamp(60px,8vw,110px);border-radius:80px;background:linear-gradient(160deg,#C6D6E6 0%,#B2C6D9 55%,#A3B9CE 100%);padding:clamp(56px,7vw,100px) 0}
+.gcard{background:rgba(255,255,255,.5);border:1.5px solid rgba(255,255,255,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:24px;padding:22px}
+.gcard .big{font:800 clamp(40px,3.6vw,54px)/1 var(--serif);color:var(--sky-deep);margin-bottom:14px}
+.gcard p{font-size:15px;color:var(--ink);line-height:1.5}
+.gcard .meta{font-size:13.5px;color:#3f4a55;margin-top:10px}
+.ev-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(16px,2vw,24px);align-items:stretch}
+.ev-copy{display:flex;flex-direction:column;min-width:0}
+.ev-h{font-size:clamp(32px,3.6vw,52px);margin-bottom:clamp(24px,3vw,36px);max-width:14em}
+.ev-img{margin:0;border-radius:24px;overflow:hidden;background:#CFDFFD;min-height:420px;border:1.5px solid rgba(255,255,255,.8)}
+.ev-img img{width:100%;height:100%;object-fit:cover;display:block}
+.ev-main{padding:clamp(22px,3vw,30px)}
+.ev-main p{font-size:clamp(17px,1.4vw,21px);line-height:1.5;color:var(--ink)}
+.ev-main p+p{margin-top:10px;color:#3f4a55;font-size:clamp(15.5px,1.15vw,17px)}
+.ev-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px;flex:1}
+.stat{border-radius:22px;padding:22px 22px 24px;background:rgba(255,255,255,.45);border:1.5px solid rgba(255,255,255,.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.stat b{display:block;font:800 clamp(40px,3.6vw,54px)/1 var(--serif);color:var(--sky-deep);margin-bottom:18px}
+.stat p{font-size:14px;color:#3f4a55;line-height:1.5}
+.stat small{display:inline-block;margin-top:12px;font:600 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--sky-deep);background:rgba(255,255,255,.6);border-radius:999px;padding:4px 10px}
+
+/* 6 · Team (approved card style) */
+.tcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.tcard{background:#fff;border-radius:32px;padding:28px 28px 34px}
+.tcard .ph{aspect-ratio:1/1;border-radius:14px;display:grid;place-items:center;margin-bottom:24px;color:rgba(255,255,255,.9);font:500 13px var(--sans)}
+.tcard:nth-child(1) .ph{background:#CDDDEC}.tcard:nth-child(2) .ph{background:#E6D6D3}.tcard:nth-child(3) .ph{background:#D9DED8}
+.tcard h3{font-size:19px;margin-bottom:2px}
+.tcard .role{font-size:12.5px;color:var(--grey);margin-bottom:16px}
+.tcard p{font-size:13.5px;color:var(--grey);line-height:1.5}
+
+/* 7 · Go further */
+.further3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.flink{display:flex;flex-direction:column;gap:8px;background:#fff;border-radius:24px;padding:22px;text-decoration:none;color:var(--ink);transition:box-shadow .3s}
+.flink:hover{box-shadow:0 12px 34px rgba(57,57,47,.08)}
+.flink b{font:800 20px/1.2 var(--serif);color:var(--head)}
+.flink span{font-size:15px;color:var(--grey)}
+.flink em{font:600 13px var(--sans);font-style:normal;color:var(--sky-deep);margin-top:auto}
+
+/* 8 · FAQ */
+.qgroup{font:800 20px var(--serif);color:var(--head);margin:6px 0 12px}
+.qgroup.next{margin-top:28px}
+
+/* 9 · Everything you need (documents band) */
+#documents{padding:clamp(70px,10vw,140px) 0 clamp(40px,6vh,70px)}
+#documents .band{position:relative;border-radius:40px;overflow:hidden;background:#C9D6E2;min-height:560px;display:flex;align-items:center}
+#documents .band>img{position:absolute;right:0;top:0;height:100%;width:46%;object-fit:cover;-webkit-mask-image:linear-gradient(90deg,transparent,#000 35%);mask-image:linear-gradient(90deg,transparent,#000 35%)}
+#documents .in{position:relative;padding:clamp(32px,6vw,90px);max-width:760px}
+#documents h2{font-size:clamp(32px,3.6vw,52px);margin:18px 0 16px}
+#documents h2 em{color:var(--sky-deep)}
+#documents .in>p{color:#3f4a55;margin-bottom:26px;max-width:30em}
+.docs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:28px;max-width:640px}
+.doc{display:flex;justify-content:space-between;align-items:center;gap:10px;background:rgba(255,255,255,.75);border-radius:16px;padding:14px 16px;text-decoration:none;color:var(--ink)}
+.doc b{font:800 16px/1.2 var(--serif)}
+.doc span{font-size:12.5px;color:var(--grey);white-space:nowrap}
+#documents .acts{display:flex;gap:12px;flex-wrap:wrap}
+
+/* Access gate (P2, P3): approved form styling */
+.gate{position:fixed;inset:0;z-index:80;display:grid;place-items:center;background:rgba(57,57,47,.4);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:16px}
+.gate[hidden]{display:none}
+.gate form{background:#fff;border-radius:32px;padding:clamp(26px,4vw,42px);width:min(560px,100%);display:grid;gap:16px}
+.gate h2{font-size:28px}
+.gate p{color:var(--grey);font-size:14.5px}
+.gate .chk{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--ink);cursor:pointer}
+.gate .chk input{margin-top:3px}
+.gate .act{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.gate .err{color:#9b3b30;font-size:13.5px;min-height:1.2em}
+
+@media (max-width:860px){
+  .hero .in{padding:100px 0 44px}
+  .hero>.bg{background-position:84% 70%}
+  .hero>.bg::before{background:linear-gradient(180deg,rgba(247,239,236,.9) 0%,rgba(247,239,236,.82) 70%,rgba(247,239,236,.6) 100%)}
+  .how,.evidence{border-radius:40px}
+  #target .media{position:relative;top:auto;height:auto;aspect-ratio:4/5}
+  #precautions,.two,.tcards,.further3,.docs{grid-template-columns:1fr}
+  .ev-grid{grid-template-columns:1fr}
+  .ev-img{order:-1;min-height:0;aspect-ratio:4/3}
+  .ev-img img{object-fit:contain}
+  #documents .band{min-height:0;flex-direction:column;align-items:stretch}
+  #documents .band>img{position:relative;width:100%;height:240px;-webkit-mask-image:linear-gradient(180deg,transparent,#000 50%);mask-image:linear-gradient(180deg,transparent,#000 50%)}
+}
+@media (max-width:560px){
+  .ev-stats{grid-template-columns:1fr}
+  .glance{grid-template-columns:1fr;gap:0;background:rgba(255,255,255,.66);border:1px solid rgba(255,255,255,.85);border-radius:20px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  .glance div{background:none;border:0;border-radius:0;backdrop-filter:none;-webkit-backdrop-filter:none;padding:11px 16px;border-top:1px solid var(--line)}
+  .glance div:first-child{border-top:0}
+}
+</style>
+</head>
+<body>
+
+<!-- Access gate (P2, P3): a single self-declaration; mechanism to agree with Julien -->
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-h">
+  <form id="gate-form" novalidate>
+    <h2 id="gate-h">Are you a healthcare professional?</h2>
+    <p>This page contains professional information about Mimyo, a medical device, for healthcare professionals in France, Belgium and Luxembourg.</p>
+    <label class="chk"><input type="checkbox" id="g-ok"> <span>I am a healthcare professional practising in France, Belgium or Luxembourg.</span></label>
+    <div class="err" id="g-err" aria-live="polite"></div>
+    <div class="act"><button class="btn" type="submit">Enter</button><a href="index.html" style="font-size:14px">I'm a parent: go to the public site</a></div>
+  </form>
+</div>
+
+<header class="top dark">
+  <a class="logo logo-slot" href="index.html" aria-label="Mimyo home"></a>
+  <nav class="pill" aria-label="Main">
+    <a class="hide-m" href="index.html">Mimyo</a>
+    <a class="on" href="professionals.html"><span class="d">Healthcare professionals</span><span class="m">Professionals</span></a>
+    <a class="cta" href="contact.html?you=pro">Get in touch</a>
+  </nav>
+</header>
+
+<main>
+<!-- 1 · HERO (P3, P9–P11): the essentials at a glance -->
+<section class="hero">
+  <div class="bg" aria-hidden="true"></div>
+  <div class="wrap" style="width:100%">
+    <div class="in">
+      <h1>A medical device for active feeding, from birth to age 4.</h1>
+      <p>Mimyo is designed to replicate key mechanics of breastfeeding (the baby creates the suction) to support oromaxillofacial development. It complements breastfeeding; it does not replace it.</p>
+      <div class="glance">
+        <div><b>Class I medical device</b><span>CE marked, Regulation (EU) 2017/745</span></div>
+        <div><b>Birth to age 4</b><span>Supports healthy oromaxillofacial development, from milk to water</span></div>
+        <div><b>Complements breastfeeding</b><span>Expressed breast milk or infant formula</span></div>
+        <div><b>Pharmacy-exclusive</b><span>With advice at the counter</span></div>
+      </div>
+      <div class="ctas"><a class="btn" href="#target">Quick answers</a><a class="btn white" href="contact.html?you=pro">Get in touch</a></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap" style="padding-top:clamp(50px,6vw,80px)">
+  <!-- 2 · WHO IT'S FOR + QUICK ANSWERS (P14–P17, P19, P20) -->
+  <section class="duo" id="target">
+    <div class="media"><img src="assets/img/r3-pack.jpg" alt="The Mimyo pharmacy pack" loading="lazy"></div>
+    <div class="txt qa-inline">
+      <h2>The questions you'll hear at the counter.</h2>
+      <p>For all babies, from birth to age 4, with expressed breast milk or formula. Here's what parents ask, and what you can tell them.</p>
+      <h3>“I'm still breastfeeding. Why would I need it?”</h3>
+      <p>Mimyo complements breastfeeding; it doesn't replace it. For feeds with expressed milk, it's designed to replicate key mechanics of breastfeeding, so the baby keeps working for the milk.</p>
+      <h3>“I'm combining, or I've stopped breastfeeding.”</h3>
+      <p>Mimyo works with expressed breast milk or formula, so the feeding mechanics stay close to the breast, whatever the milk. The pouch stores expressed milk in the fridge, with a morning/evening marker so the baby gets milk expressed at the same time of day. The other parent can share feeds too.</p>
+      <h3>“Can my baby drink water from it?”</h3>
+      <p>Yes. Once the paediatrician starts semi-solid food, Mimyo can replace the beaker or cup. <mark>to confirm with the instructions for use</mark></p>
+      <h3>“How is it different from a normal bottle?”</h3>
+      <p>Milk doesn't flow by gravity: the baby has to create the suction, as at the breast. And there's no air intake, by design. <mark>source: LHP document of 6 Oct</mark></p>
+      <h3>“What's in the box?”</h3>
+      <p>The device, a milk pouch, a teat and a valve. Spare pouches, teats, valves and a dishwasher basket are sold separately.</p>
+    </div>
+  </section>
+</div>
+
+<!-- 3 · HOW IT WORKS: the slider from the home page, in clinical terms -->
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="head">
+      <h2>How Mimyo works.</h2>
+      <p>Two forces remove milk at the breast: peristaltic tongue compression and intra-oral negative pressure. Mimyo's patented dual-valve system requires both. It admits no air and releases no milk by gravity.</p>
+    </div>
+    <figure class="cmpwrap">
+      <div class="compare" id="cmp">
+        <img src="assets/img/latch-mimyo.jpg" alt="Cut-away of an infant feeding with Mimyo: lips flanged on the wide base of the teat, the teat drawn deep into the mouth with the tongue beneath it, nasal airway open." width="1800" height="1344" loading="lazy">
+        <img class="cmp-top" src="assets/img/latch-breast.jpg" alt="Cut-away of an infant feeding at the breast: lips flanged on the areola, the nipple drawn deep into the mouth with the tongue beneath it, nasal airway open." width="1800" height="1344" loading="lazy">
+        <!-- numbers: shown on both pictures, since the mechanics are the same. Positions are % of the 1800 × 1344 illustration. -->
+        <div class="callouts" aria-hidden="true">
+          <span class="co" style="--x:35%;--y:38%">1</span>
+          <span class="co" style="--x:49%;--y:71%">2</span>
+          <span class="co" style="--x:42%;--y:83%">3</span>
+          <span class="co" style="--x:55.6%;--y:44%">4</span>
+        </div>
+        <span class="lbl l">At the breast</span>
+        <span class="lbl r">With Mimyo</span>
+        <span class="bar" aria-hidden="true"></span>
+        <input type="range" min="0" max="100" value="60" step="1" aria-label="Compare breastfeeding and Mimyo">
+        <span class="knob" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+      </div>
+      <figcaption>Slide to compare the breast with Mimyo.</figcaption>
+    </figure>
+    <ol class="benefits4">
+      <li><i>1</i><b>Lip seal</b><span>The lips flange and seal on the wide base of the teat, as on the areola. No air enters.</span></li>
+      <li><i>2</i><b>Peristaltic tongue compression</b><span>The tongue compresses the teat against the palate in a wave, front to back.</span></li>
+      <li><i>3</i><b>Intra-oral negative pressure</b><span>The jaw lowers and creates the vacuum. Milk is released only under this negative pressure.</span></li>
+      <li><i>4</i><b>Suck-swallow-nasal-breathe</b><span>Breathing stays nasal, carrying nitric oxide from the sinuses into the airway.</span></li>
+    </ol>
+  </div>
+</section>
+
+<div class="wrap">
+  <!-- 4 · PRECAUTIONS AND CONTRAINDICATIONS (P22–P25) -->
+  <section class="sec" id="precautions">
+    <div class="shead">
+      <h2>Precautions and contraindications.</h2>
+      <p>Medical device, CE marked under Regulation (EU) 2017/745. Materials: medical-grade silicone, BPA-free <mark>to confirm</mark>. Read the instructions for use and the labelling carefully before use.</p>
+      <a class="btn" href="#documents">Instructions for use</a>
+    </div>
+    <div>
+      <div class="box">
+        <h3>Warnings</h3>
+        <ul>
+          <li>Use only with all original parts, including the valve and valve holder. Replace only with Mimyo spare parts.</li>
+          <li>Always use with adult supervision.</li>
+          <li>Always check the milk temperature before feeding.</li>
+          <li>Inspect before each use; discard at the first sign of damage or weakness.</li>
+          <li>Continuous and prolonged sucking of fluids may cause tooth decay.</li>
+          <li>Do not use the teat as a soother.</li>
+          <li>Keep components not in use out of reach of children.</li>
+          <li>Keep away from direct sunlight and heat sources.</li>
+        </ul>
+        <p style="padding-top:4px"><mark>Standard EN 14350 warnings; replace with the exact wording from Mimyo's instructions for use, expected end Nov / early Dec.</mark></p>
+      </div>
+      <div class="two">
+        <div class="box"><h3>Contraindications &amp; indications</h3><p><mark>From the instructions for use, expected end Nov / early Dec.</mark></p></div>
+        <div class="box"><h3>Silicone allergy?</h3><p><mark>Answer to be validated by Dr Caroline De Ville.</mark></p></div>
+      </div>
+      <div class="two">
+        <div class="box"><h3>When to refer</h3><p>Persistent feeding difficulty, poor weight gain, suspected oral anomaly or swallowing disorder. <mark>to validate</mark></p></div>
+        <div class="box"><h3>Materiovigilance</h3><p>Report any incident to LHP Healthcare (<mark>vigilance@…</mark>) and to the competent authority: ANSM, FAMHP/AFMPS or Direction de la santé.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- 5 · EVIDENCE (P26–P29): the CHU Rabat programme up front, then the background literature -->
+<section class="evidence" id="evidence">
+  <div class="wrap">
+    <h2 class="ev-h">Mimyo is based on clinical evidence.</h2>
+    <div class="ev-grid">
+      <div class="ev-copy">
+        <div class="ev-main gcard">
+          <p>Clinical investigation ISO 14350 and 13485 / EU MDR (the European Union Medical Device Regulation), in 3 phases, with 160 infants.</p>
+          <p>580 echographies with 160 infants at CHU Rabat (Morocco), under the direction of Professor Barkat.</p>
+        </div>
+        <div class="ev-stats">
+          <div class="stat"><b>160</b><p>Infants in the clinical investigation at CHU Ibn Sina, Rabat.</p></div>
+          <div class="stat"><b>580</b><p>Echographies, under the direction of Prof. Barkat. Results are being finalised.</p></div>
+          <div class="stat"><b>RCT</b><p>A valved bottle improved suck-swallow-nasal-breathe coordination. Cresi et al., 2024.</p></div>
+          <div class="stat"><b>359</b><p>Schoolchildren studied for malocclusion prevalence in France. Borsa et al., 2023.</p></div>
+        </div>
+      </div>
+      <figure class="ev-img"><img src="assets/img/technical-blue.jpg" alt="Mimyo with its technical line drawing: the teat, valve and milk pouch inside the device" width="936" height="1200" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <!-- 6 · WHO'S BEHIND MIMYO (P30) -->
+  <section class="sec" id="team">
+    <div class="shead">
+      <h2>The people behind the science.</h2>
+    </div>
+    <div class="tcards">
+      <article class="tcard"><div class="ph">Photo to come</div><h3>Dr Caroline De Ville</h3><p class="role">General practitioner · IBCLC lactation consultant</p><p>Specialised in early childhood, breastfeeding and restrictive oral ties. Founder of the training institute <mark>Au sein en douceur</mark>. <mark>Bio to confirm</mark></p></article>
+      <article class="tcard"><div class="ph">Photo to come</div><h3>Nathalie <mark>surname</mark></h3><p class="role"><mark>Role</mark></p><p><mark>Bio from Henrik, Caroline or Jacques</mark></p></article>
+      <article class="tcard"><div class="ph">Logo to come</div><h3>SleepClinic</h3><p class="role"><mark>Partner role</mark></p><p><mark>Short description</mark></p></article>
+    </div>
+  </section>
+
+  <!-- 7 · GO FURTHER (P31–P33) -->
+  <section class="sec" id="further">
+    <div class="shead">
+      <h2>For those who want to dig deeper.</h2>
+      <p>Everything above is what you need at the counter. Here's where to learn more about Mimyo and oro-maxillofacial function.</p>
+    </div>
+    <div class="further3">
+      <a class="flink" href="#documents"><b>Mimyo and oro-maxillofacial function</b><span>The scientific summary and the full background literature.</span><em>Scientific summary →</em></a>
+      <a class="flink" href="contact.html?you=pro"><b>Partner pharmacies</b><span>Webinars and e-learning are available through your pharmacy group.</span><em>Ask your group →</em></a>
+      <a class="flink" href="contact.html?you=pro"><b>Doctors, midwives &amp; physiotherapists</b><span><mark>Au sein du cœur</mark> runs webinars for healthcare professionals.</span><em><mark>link to confirm</mark></em></a>
+    </div>
+  </section>
+
+  <!-- 8 · FAQ -->
+  <section class="faq" id="faq">
+    <div>
+      <h2>Questions?<br>Answers.</h2>
+      <p class="lead">The questions you're most likely to hear at the counter, and the ones colleagues ask us.</p>
+      <a class="btn" href="contact.html?you=pro">Get in touch</a>
+    </div>
+    <div>
+      <h3 class="qgroup">From parents</h3>
+      <details class="qa"><summary>Is this a baby bottle?<i></i></summary><div class="ans">Mimyo is a Class I medical device for feeding. The baby has to actively produce the suction that releases the milk; milk does not flow by gravity.</div></details>
+      <details class="qa"><summary>Will it interfere with breastfeeding?<i></i></summary><div class="ans">Mimyo is intended to complement breastfeeding, not replace it, and can be used with expressed breast milk. <mark>When to introduce it: to validate with the scientific director</mark></div></details>
+      <details class="qa"><summary>From what age, and until when?<i></i></summary><div class="ans">From birth to age 4.</div></details>
+      <details class="qa"><summary>Breast milk or formula?<i></i></summary><div class="ans">Both: expressed breast milk or infant formula.</div></details>
+      <details class="qa"><summary>My baby doesn't take it straight away. Is that normal?<i></i></summary><div class="ans">The baby has to make the effort that releases the milk, and some babies need a few feeds to adjust. If difficulties persist, refer to a midwife, lactation consultant or doctor. <mark>to validate</mark></div></details>
+      <details class="qa"><summary>How do I clean and sterilise it?<i></i></summary><div class="ans">Take it fully apart. Hand wash or dishwasher; sterilise by boiling or steam (electric or microwave). <mark>confirm with the instructions for use</mark></div></details>
+      <details class="qa"><summary>Can I store breast milk in the pouch?<i></i></summary><div class="ans">Yes. The pouch is designed for expressed breast milk and has a morning/evening marker. Follow national guidance on storage times. <mark>confirm with the instructions for use</mark></div></details>
+      <details class="qa"><summary>Is it reimbursed?<i></i></summary><div class="ans">No, Mimyo is not reimbursed. <mark>confirm FR / BE / LU</mark></div></details>
+      <h3 class="qgroup next">From professionals</h3>
+      <details class="qa"><summary>Why is Mimyo a medical device?<i></i></summary><div class="ans">Because of its intended purpose, which relates to oral function during feeding. Under Regulation (EU) 2017/745 it is Class I (Annex VIII, rule 5: invasive device in a body orifice, used in the oral cavity). <mark>quote the intended purpose from the declaration of conformity</mark></div></details>
+      <details class="qa"><summary>What can I say to parents?<i></i></summary><div class="ans">Stay within the intended purpose in the instructions for use: describe how the device works and how it's used. Don't present Mimyo as preventing or treating a condition, and don't compare it with other products.</div></details>
+      <details class="qa"><summary>Is it suitable for preterm infants, or babies with a tongue-tie?<i></i></summary><div class="ans"><mark>Answer from the instructions for use and the clinical evaluation report.</mark></div></details>
+      <details class="qa"><summary>What clinical data are available?<i></i></summary><div class="ans">A completed pilot usability study and an ongoing echographic study, both at CHU Ibn Sina, Rabat. See <a href="#evidence">Clinical evidence</a>. A scientific summary is available on request.</div></details>
+      <details class="qa"><summary>Who is behind Mimyo?<i></i></summary><div class="ans">LHP Healthcare, a Belgian MedTech company. Scientific director: Jacques Hinant (respiratory and sleep medicine). Clinical studies are led by Prof. Amina Barkat (neonatology, CHU Ibn Sina, Rabat).</div></details>
+      <details class="qa"><summary>How do I order, and is there a demo unit?<i></i></summary><div class="ans"><mark>Ordering channel: wholesaler or direct, to confirm.</mark> To request a demo unit or a visit, use the button under <a href="#documents">Everything you need</a>.</div></details>
+      <details class="qa"><summary>How do I report an incident?<i></i></summary><div class="ans">Report it to LHP Healthcare (<mark>vigilance@…</mark>) and to the competent authority: ANSM, FAMHP/AFMPS or Direction de la santé.</div></details>
+    </div>
+  </section>
+
+  <!-- 9 · EVERYTHING YOU NEED (documents and contact) -->
+  <section id="documents">
+    <div class="band">
+      <div class="in">
+        <h2>Everything you need <em>at the counter.</em></h2>
+        <p>The reference documents, and a direct line to the LHP team.</p>
+        <div class="docs">
+          <a class="doc" href="contact.html?you=pro"><b>Instructions for use</b><span><mark>PDF · pending</mark></span></a>
+          <a class="doc" href="contact.html?you=pro"><b>Declaration of conformity</b><span><mark>PDF · pending</mark></span></a>
+          <a class="doc" href="contact.html?you=pro"><b>Pharmacy product sheet</b><span><mark>to create</mark></span></a>
+          <a class="doc" href="contact.html?you=pro"><b>Scientific summary</b><span><mark>to create</mark></span></a>
+          <a class="doc" href="contact.html?you=pro"><b>Parent leaflet</b><span><mark>to create</mark></span></a>
+          <a class="doc" href="contact.html?you=pro"><b>Assembly video</b><span><mark>to create</mark></span></a>
+        </div>
+        <div class="acts"><a class="btn" href="contact.html?you=pro">Request a demo unit or a visit</a><a class="btn white" href="contact.html?you=pro">Contact us</a></div>
+      </div>
+      <img src="assets/img/pouch.jpg" alt="" loading="lazy">
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="site">
+  <div class="row">
+    <div>
+      <span class="logo logo-slot"></span>
+      <h4>Tomorrow's health <em>begins at birth</em></h4>
+      <p>Mimyo is a CE-marked medical feeding device designed to replicate the mechanics of breastfeeding. Your baby works for the milk, which supports healthy jaw development and nasal breathing.</p>
+    </div>
+    <nav class="pill" aria-label="Footer"><a href="index.html">Mimyo</a><a class="on" href="professionals.html"><span class="d">Healthcare professionals</span><span class="m">Professionals</span></a><a class="cta" href="contact.html?you=pro">Get in touch</a></nav>
+  </div>
+  <div class="legal"><span>© 2026 Mimyo. All rights reserved.<br>CE-marked medical device by LHP Healthcare, Belgium</span><span><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a></span></div>
+  <div class="wm logo-slot" aria-hidden="true"></div>
+</footer>
+
+<script src="assets/logo.js"></script>
+<script src="assets/compare.js?v=3"></script>
+<script>
+document.querySelectorAll('.logo-slot').forEach(el => el.innerHTML = window.LOGO_FULL.replace(/ width="530" height="163"/, ''));
+
+// Access gate: session flag only
+const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} } };
+const gate = document.getElementById('gate');
+if (ss.get('mimyo_hcp') === '1') gate.hidden = true; else document.documentElement.style.overflow = 'hidden';
+document.getElementById('gate-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const err = document.getElementById('g-err'), v = id => document.getElementById(id);
+  if (!v('g-ok').checked) { err.textContent = 'Please confirm that you are a healthcare professional.'; return; }
+  ss.set('mimyo_hcp', '1');
+  gate.hidden = true; document.documentElement.style.overflow = '';
+});
+</script>
+</body>
+</html>
